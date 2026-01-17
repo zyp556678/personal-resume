@@ -68,7 +68,10 @@
     <!-- 教育背景部分 -->
     <section id="education" class="section education-section">
       <div class="container">
-        <h2 class="section-title">教育背景 <span class="jump-hint">(点击跳转)</span></h2>
+        <div class="section-title-wrapper">
+          <h2 class="section-title">教育背景</h2>
+          <span class="jump-hint">(点击跳转)</span>
+        </div>
         <div class="timeline">
           <a href="https://www.usth.edu.cn/" target="_blank" class="school-link">
             <div class="timeline-item">
@@ -87,7 +90,10 @@
     <!-- 技能部分 -->
     <section id="skills" class="section skills-section">
       <div class="container">
-        <h2 class="section-title">职业技能 <span class="jump-hint">(点击跳转)</span></h2>
+        <div class="section-title-wrapper">
+          <h2 class="section-title">职业技能</h2>
+          <span class="jump-hint">(点击跳转)</span>
+        </div>
         <div class="skills-container">
           <div class="skill-category">
             <h3>编程语言</h3>
@@ -188,7 +194,10 @@
     <!-- 项目经验部分 -->
     <section id="projects" class="section projects-section">
       <div class="container">
-        <h2 class="section-title">项目经验 <span class="jump-hint">(点击跳转)</span></h2>
+        <div class="section-title-wrapper">
+          <h2 class="section-title">项目经验</h2>
+          <span class="jump-hint">(点击跳转)</span>
+        </div>
         <div class="projects-grid">
           <a href="https://gitee.com/zyp556678/gmall" target="_blank" class="project-link">
             <div class="project-card">
@@ -293,7 +302,10 @@
     <!-- 校园经历部分 -->
     <section id="experience" class="section experience-section">
       <div class="container">
-        <h2 class="section-title">校园经历 <span class="jump-hint">(点击跳转)</span></h2>
+        <div class="section-title-wrapper">
+          <h2 class="section-title">校园经历</h2>
+          <span class="jump-hint">(点击跳转)</span>
+        </div>
         <div class="timeline">
           <a href="/images/certificate.jpg" target="_blank" class="certificate-link">
             <div class="timeline-item">

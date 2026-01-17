@@ -49,9 +49,17 @@ body {
   padding: 60px 0;
 }
 
+.section-title-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .section-title {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
   font-size: 2.5rem;
   color: var(--primary-color);
   position: relative;
@@ -68,11 +76,12 @@ body {
 }
 
 .jump-hint {
+  display: block;
   font-size: 0.8rem;
   color: var(--secondary-color);
   font-weight: normal;
-  margin-left: 8px;
-  vertical-align: middle;
+  margin-top: 5px;
+  text-align: center;
 }
 
 /* 导航栏样式 */

@@ -1,0 +1,464 @@
+/* 引入Font Awesome图标 */
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+
+/* 全局样式 */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #333;
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+.dark-mode {
+  --primary-color: #ecf0f1;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --text-color: #ecf0f1;
+  --bg-color: #2c3e50;
+  --card-bg: #34495e;
+  --border-color: #7f8c8d;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: var(--transition);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--secondary-color);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* 导航栏样式 */
+.navbar {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-logo {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+}
+
+.nav-item {
+  margin-left: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.theme-toggle {
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: #2980b9;
+}
+
+/* 个人信息部分 */
+.about-section {
+  padding-top: 100px;
+}
+
+.profile-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 30px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.profile-info h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  text-align: left;
+}
+
+.contact-item {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* 时间线样式 */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--secondary-color);
+  left: 30px;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--secondary-color);
+  border-radius: 50%;
+  left: 20px;
+  top: 10px;
+  z-index: 1;
+}
+
+.timeline-content {
+  margin-left: 60px;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  flex-grow: 1;
+  transition: var(--transition);
+}
+
+.timeline-content h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.timeline-date {
+  color: var(--secondary-color);
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.timeline-description {
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.timeline-description ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.timeline-description li {
+  margin-bottom: 5px;
+}
+
+/* 证书链接样式 */
+.certificate-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.certificate-link .timeline-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* 技能部分 */
+.skills-section {
+  background-color: var(--bg-color);
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.skill-category h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: var(--secondary-color);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.skill-tag:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 项目经验部分 */
+.projects-section {
+  background-color: var(--bg-color);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 25px;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.project-role {
+  color: var(--secondary-color);
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.project-tech {
+  margin-bottom: 15px;
+}
+
+.tech-tag {
+  background: #e0e0e0;
+  color: var(--text-color);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.project-details, .project-results {
+  margin-top: 15px;
+  flex-grow: 1;
+}
+
+.project-details h4, .project-results h4 {
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.project-details ul, .project-results ul {
+  padding-left: 20px;
+}
+
+.project-details li, .project-results li {
+  margin-bottom: 5px;
+}
+
+/* 校园经历部分 */
+.experience-section {
+  background-color: var(--bg-color);
+}
+
+/* 自我评价部分 */
+.evaluation-content {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: var(--transition);
+}
+
+.evaluation-content ul {
+  padding-left: 20px;
+}
+
+.evaluation-content li {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* 页脚 */
+.footer {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 20px;
+  }
+  
+  .nav-menu {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-item {
+    margin: 5px;
+  }
+  
+  .section {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-marker {
+    left: 15px;
+  }
+  
+  .timeline-content {
+    margin-left: 50px;
+    padding: 15px;
+  }
+  
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-info h3 {
+    font-size: 1.5rem;
+  }
+}

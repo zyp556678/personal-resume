@@ -47,6 +47,14 @@
                   <span class="contact-item"><i class="fas fa-birthday-cake"></i> 出生: 2005年12月</span>
                   <span class="contact-item"><i class="fas fa-flag"></i> 民族: 汉族</span>
                 </p>
+                <div class="social-links">
+                  <a href="https://github.com/zyp556678" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                  <a href="https://gitee.com/zyp556678" target="_blank" class="social-link">
+                    <i class="fas fa-code-branch"></i> Gitee
+                  </a>
+                </div>
               </div>
               <div class="profile-photo">
                 <img src="/images/personal.jpg" alt="张宇鹏证件照" />
@@ -60,7 +68,7 @@
     <!-- 教育背景部分 -->
     <section id="education" class="section education-section">
       <div class="container">
-        <h2 class="section-title">教育背景</h2>
+        <h2 class="section-title">教育背景 <span class="jump-hint">(点击跳转)</span></h2>
         <div class="timeline">
           <a href="https://www.usth.edu.cn/" target="_blank" class="school-link">
             <div class="timeline-item">
@@ -79,7 +87,7 @@
     <!-- 技能部分 -->
     <section id="skills" class="section skills-section">
       <div class="container">
-        <h2 class="section-title">职业技能</h2>
+        <h2 class="section-title">职业技能 <span class="jump-hint">(点击跳转)</span></h2>
         <div class="skills-container">
           <div class="skill-category">
             <h3>编程语言</h3>
@@ -180,7 +188,7 @@
     <!-- 项目经验部分 -->
     <section id="projects" class="section projects-section">
       <div class="container">
-        <h2 class="section-title">项目经验</h2>
+        <h2 class="section-title">项目经验 <span class="jump-hint">(点击跳转)</span></h2>
         <div class="projects-grid">
           <a href="https://gitee.com/zyp556678/gmall" target="_blank" class="project-link">
             <div class="project-card">
@@ -285,7 +293,7 @@
     <!-- 校园经历部分 -->
     <section id="experience" class="section experience-section">
       <div class="container">
-        <h2 class="section-title">校园经历</h2>
+        <h2 class="section-title">校园经历 <span class="jump-hint">(点击跳转)</span></h2>
         <div class="timeline">
           <a href="/images/certificate.jpg" target="_blank" class="certificate-link">
             <div class="timeline-item">

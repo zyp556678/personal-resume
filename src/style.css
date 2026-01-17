@@ -67,6 +67,14 @@ body {
   border-radius: 2px;
 }
 
+.jump-hint {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  font-weight: normal;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
 /* 导航栏样式 */
 .navbar {
   background-color: var(--card-bg);
@@ -190,6 +198,36 @@ body {
   display: block;
   margin-bottom: 10px;
   font-size: 1.1rem;
+}
+
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  background: var(--secondary-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-link i {
+  margin-right: 6px;
 }
 
 /* 时间线样式 */

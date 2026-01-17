@@ -143,7 +143,37 @@ body {
   transition: var(--transition);
 }
 
-.profile-info h3 {
+.info-photo-container {
+  display: flex;
+  align-items: flex-start; /* 修改为flex-start，使内容顶部对齐 */
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.profile-info-text {
+  flex: 1;
+  text-align: left;
+}
+
+.profile-photo {
+  flex-shrink: 0;
+  width: 150px;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  align-self: flex-start; /* 确保照片在顶部对齐 */
+  margin-top: 10px; /* 添加上边距使照片下移 */
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info-text h3 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: var(--primary-color);
@@ -243,6 +273,19 @@ body {
 }
 
 .certificate-link .timeline-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* 学校链接样式 */
+.school-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.school-link .timeline-content:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -433,6 +476,17 @@ body {
     font-size: 2rem;
   }
   
+  .info-photo-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-photo {
+    width: 120px;
+    height: 150px;
+    margin-top: 20px; /* 在移动端也下移照片 */
+  }
+  
   .timeline::before {
     left: 20px;
   }
@@ -458,7 +512,7 @@ body {
     grid-template-columns: 1fr;
   }
   
-  .profile-info h3 {
+  .profile-info-text h3 {
     font-size: 1.5rem;
   }
 }

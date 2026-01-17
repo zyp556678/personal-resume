@@ -36,15 +36,22 @@
         <h2 class="section-title">个人信息</h2>
         <div class="profile-card">
           <div class="profile-info">
-            <h3>张宇鹏</h3>
-            <p class="contact-info">
-              <span class="contact-item"><i class="fas fa-phone"></i> 电话: 18745397398</span>
-              <span class="contact-item"><i class="fas fa-envelope"></i> 邮箱: taitanyunluo2@126.com</span>
-              <span class="contact-item"><i class="fas fa-user"></i> 性别: 男</span>
-              <span class="contact-item"><i class="fas fa-map-marker-alt"></i> 现居: 黑龙江省牡丹江市</span>
-              <span class="contact-item"><i class="fas fa-birthday-cake"></i> 出生: 2005年12月</span>
-              <span class="contact-item"><i class="fas fa-flag"></i> 民族: 汉族</span>
-            </p>
+            <div class="info-photo-container">
+              <div class="profile-info-text">
+                <h3>张宇鹏</h3>
+                <p class="contact-info">
+                  <span class="contact-item"><i class="fas fa-phone"></i> 电话: 18745397398</span>
+                  <span class="contact-item"><i class="fas fa-envelope"></i> 邮箱: taitanyunluo2@126.com</span>
+                  <span class="contact-item"><i class="fas fa-user"></i> 性别: 男</span>
+                  <span class="contact-item"><i class="fas fa-map-marker-alt"></i> 现居: 黑龙江省牡丹江市</span>
+                  <span class="contact-item"><i class="fas fa-birthday-cake"></i> 出生: 2005年12月</span>
+                  <span class="contact-item"><i class="fas fa-flag"></i> 民族: 汉族</span>
+                </p>
+              </div>
+              <div class="profile-photo">
+                <img src="/images/personal.jpg" alt="张宇鹏证件照" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -55,14 +62,16 @@
       <div class="container">
         <h2 class="section-title">教育背景</h2>
         <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <h3>黑龙江科技大学 - 软件工程</h3>
-              <p class="timeline-date">2023年09月 - 2027年06月（本科）</p>
-              <p class="timeline-description">主修课程：Java、数据结构与算法、计算机系统基础、数据库原理及应用、计算机网络、操作系统、算法设计与分析、软件工程</p>
+          <a href="https://www.usth.edu.cn/" target="_blank" class="school-link">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3>黑龙江科技大学 - 软件工程</h3>
+                <p class="timeline-date">2023年09月 - 2027年06月（本科）</p>
+                <p class="timeline-description">主修课程：Java、数据结构与算法、计算机系统基础、数据库原理及应用、计算机网络、操作系统、算法设计与分析、软件工程</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>

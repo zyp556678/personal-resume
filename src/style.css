@@ -50,7 +50,12 @@ body {
 }
 
 .section {
-  padding: 60px 0;
+  padding: 130px 0 60px 0; /* 增加上内边距以避免被固定导航栏遮挡 */
+}
+
+/* 为所有锚点目标元素添加负边距补偿 */
+[id] {
+  scroll-margin-top: 70px; /* 与导航栏高度相匹配 */
 }
 
 .section-title-wrapper {
@@ -152,7 +157,7 @@ body {
 
 /* 个人信息部分 */
 .about-section {
-  padding-top: 100px;
+  /* 不再需要额外的上内边距，因为 section 已经设置了 */
 }
 
 .profile-card {
@@ -606,5 +611,10 @@ body {
   
   .social-links {
     flex-direction: column;
+  }
+  
+  /* 为移动端添加额外的顶部内边距以避免导航栏遮挡 */
+  [id] {
+    scroll-margin-top: 100px; /* 增加到100px以适应移动端可能更高的导航栏 */
   }
 }

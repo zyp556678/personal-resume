@@ -265,9 +265,9 @@
             </div>
           </a>
 
-          <a href="https://gitee.com/zyp556678/reggie_take_out" target="_blank" class="project-link">
+          <a href="https://gitee.com/zyp556678/鲲鹏_take_out" target="_blank" class="project-link">
             <div class="project-card">
-              <h3>Reggie外卖点餐平台</h3>
+              <h3>鲲鹏外卖点餐平台</h3>
               <p class="project-role">后端开发工程师</p>
               <div class="project-tech">
                 <span class="tech-tag">SpringBoot</span>

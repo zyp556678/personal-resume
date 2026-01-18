@@ -123,7 +123,7 @@
 
 ---
 
-### 3. Reggie外卖点餐平台 | 后端开发工程师
+### 3. 鲲鹏外卖点餐平台 | 后端开发工程师
 
 **技术栈**：SpringBoot、MyBatis-Plus、Redis、Swagger  
 **项目概述**：基于SpringBoot的前后端分离外卖系统，提供高效、稳定的在线点餐服务。

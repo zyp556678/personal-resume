@@ -53,9 +53,9 @@ body {
   padding: 130px 0 60px 0; /* 增加上内边距以避免被固定导航栏遮挡 */
 }
 
-/* 为所有锚点目标元素添加负边距补偿 */
+/* 为所有锚点目标元素添加滚动边距补偿 */
 [id] {
-  scroll-margin-top: 70px; /* 与导航栏高度相匹配 */
+  scroll-margin-top: 80px; /* 默认情况下为导航栏预留空间 */
 }
 
 .section-title-wrapper {
@@ -545,6 +545,12 @@ body {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  /* 确保导航栏在移动端正确显示 */
+  .navbar {
+    position: fixed;
+    height: auto;
+    min-height: 60px;
+  }
   .nav-container {
     flex-direction: column;
     height: auto;
@@ -613,8 +619,62 @@ body {
     flex-direction: column;
   }
   
+  /* 小屏幕设备额外优化 */
+  @media (max-width: 480px) {
+    [id] {
+      scroll-margin-top: 140px; /* 超小屏幕设备进一步增加间距 */
+    }
+    
+    .nav-container {
+      padding: 8px 12px;
+    }
+    
+    .nav-logo {
+      font-size: 1.1rem;
+    }
+    
+    .nav-item {
+      margin: 2px;
+    }
+    
+    .nav-link, .theme-toggle {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+    }
+  }
+  
   /* 为移动端添加额外的顶部内边距以避免导航栏遮挡 */
   [id] {
-    scroll-margin-top: 100px; /* 增加到100px以适应移动端可能更高的导航栏 */
+    scroll-margin-top: 120px; /* 增加到120px以充分适应移动端折叠后的导航栏 */
+  }
+  
+  /* 移动端导航栏高度调整 */
+  .navbar {
+    position: sticky; /* 改为sticky定位，在小屏幕上有更好的表现 */
+  }
+  
+  .nav-container {
+    padding: 10px 15px;
+  }
+  
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+  
+  .nav-menu {
+    margin-top: 10px;
+  }
+  
+  .nav-item {
+    margin: 3px;
+  }
+  
+  .nav-link, .theme-toggle {
+    font-size: 0.9rem;
+    padding: 6px 12px;
   }
 }

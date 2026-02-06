@@ -321,13 +321,13 @@
             <div class="timeline-marker"></div>
             <div class="timeline-content">
               <h3>团委组织部干事</h3>
-              <p class="timeline-description">
+              <div class="timeline-description">
                 <ul>
                   <li><strong>团队建设：</strong>协助组织3次团建活动，提升成员沟通与协作能力</li>
                   <li><strong>培训与发展：</strong>筹备并执行2期新成员培训计划，内容涵盖团队合作与项目管理</li>
                   <li><strong>项目支持：</strong>参与策划并实施全校"青年领导力"发展项目</li>
                 </ul>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -368,6 +368,7 @@ export default {
   },
   mounted() {
     this.applyTheme();
+    this.initSmoothScroll();
   },
   methods: {
     toggleTheme() {
@@ -382,6 +383,32 @@ export default {
         document.body.classList.add('light-mode');
         document.body.classList.remove('dark-mode');
       }
+    },
+    initSmoothScroll() {
+      // 监听所有的锚点点击事件
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (link) {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            // 计算导航栏高度（动态获取）
+            const navbar = document.querySelector('.navbar');
+            const navbarHeight = navbar ? navbar.offsetHeight : 70;
+            
+            // 获取目标元素距离顶部的距离
+            const targetPosition = targetElement.offsetTop;
+            
+            // 平滑滚动到目标位置，减去导航栏高度
+            window.scrollTo({
+              top: targetPosition - navbarHeight - 20, // 额外减去20px的缓冲
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
     }
   }
 }

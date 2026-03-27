@@ -199,7 +199,7 @@
           <span class="jump-hint">(点击跳转)</span>
         </div>
         <div class="projects-grid">
-          <a href="https://gitee.com/zyp556678/gmall" target="_blank" class="project-link">
+          <a href="https://gitee.com/zyp556678/yuewu_parent" target="_blank" class="project-link">
             <div class="project-card">
               <h3>谷粒商城（gmall）</h3>
               <p class="project-role">后端开发工程师</p>

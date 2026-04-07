@@ -199,9 +199,9 @@
           <span class="jump-hint">(点击跳转)</span>
         </div>
         <div class="projects-grid">
-          <a href="https://gitee.com/zyp556678/yuewu_parent" target="_blank" class="project-link">
+          <div @click="openProjectModal('yuewu')" class="project-link">
             <div class="project-card">
-              <h3>谷粒商城（gmall）</h3>
+              <h3>悦物在线商城系统</h3>
               <p class="project-role">后端开发工程师</p>
               <div class="project-tech">
                 <span class="tech-tag">SpringCloud</span>
@@ -229,9 +229,9 @@
                 </ul>
               </div>
             </div>
-          </a>
+          </div>
 
-          <a href="https://gitee.com/zyp556678/laboratory-master" target="_blank" class="project-link">
+          <div @click="openProjectModal('laboratory')" class="project-link">
             <div class="project-card">
               <h3>实验室资源管理系统</h3>
               <p class="project-role">后端开发工程师</p>
@@ -263,9 +263,9 @@
                 </ul>
               </div>
             </div>
-          </a>
+          </div>
 
-          <a href="https://gitee.com/zyp556678/take_out_system" target="_blank" class="project-link">
+          <div @click="openProjectModal('takeout')" class="project-link">
             <div class="project-card">
               <h3>鲲鹏外卖点餐平台</h3>
               <p class="project-role">后端开发工程师</p>
@@ -294,7 +294,7 @@
                 </ul>
               </div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>
@@ -355,6 +355,39 @@
         <p>&copy; 2026 张宇鹏. 版权所有</p>
       </div>
     </footer>
+
+    <!-- 项目选择弹窗 -->
+    <div v-if="showModal" class="modal-overlay" @click="closeModal">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h3>{{ selectedProject?.name }}</h3>
+          <button @click="closeModal" class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-description">请选择代码仓库平台：</p>
+          <div class="modal-buttons">
+            <a 
+              v-if="selectedProject?.gitee" 
+              :href="selectedProject.gitee" 
+              target="_blank" 
+              class="modal-btn social-link"
+              @click="closeModal"
+            >
+              <i class="fas fa-code-branch"></i> Gitee
+            </a>
+            <a 
+              v-if="selectedProject?.github" 
+              :href="selectedProject.github" 
+              target="_blank" 
+              class="modal-btn social-link"
+              @click="closeModal"
+            >
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -363,7 +396,9 @@ export default {
   name: 'App',
   data() {
     return {
-      darkMode: false
+      darkMode: false,
+      showModal: false,
+      selectedProject: null
     }
   },
   mounted() {
@@ -383,6 +418,31 @@ export default {
         document.body.classList.add('light-mode');
         document.body.classList.remove('dark-mode');
       }
+    },
+    openProjectModal(projectKey) {
+      const projects = {
+        yuewu: {
+          name: '悦物在线商城系统',
+          gitee: 'https://gitee.com/zyp556678/yuewu_parent',
+          github: 'https://github.com/zyp556678/yuewu_parent'
+        },
+        laboratory: {
+          name: '实验室资源管理系统',
+          gitee: 'https://gitee.com/zyp556678/laboratory-master',
+          github: 'https://github.com/zyp556678/laboratory-master'
+        },
+        takeout: {
+          name: '鲲鹏外卖点餐平台',
+          gitee: 'https://gitee.com/zyp556678/take_out_system',
+          github: 'https://github.com/zyp556678/take_out_system'
+        }
+      };
+      this.selectedProject = projects[projectKey];
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+      this.selectedProject = null;
     },
     initSmoothScroll() {
       // 监听所有的锚点点击事件

@@ -1,6 +1,16 @@
 <template>
   <div id="app">
 
+    <!-- BACKGROUND EFFECTS -->
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg-shape bg-shape-1"></div>
+      <div class="bg-shape bg-shape-2"></div>
+      <div class="bg-shape bg-shape-3"></div>
+      <div class="bg-shape bg-shape-4"></div>
+      <div class="bg-cursor-glow"></div>
+      <div class="bg-dot-grid"></div>
+    </div>
+
     <!-- NAV -->
     <nav class="navbar">
       <div class="nav-inner">
@@ -419,6 +429,7 @@ export default {
     this.applyTheme();
     this.initSmoothScroll();
     this.initScrollReveal();
+    this.initBgInteraction();
   },
   methods: {
     toggleTheme() {
@@ -463,6 +474,27 @@ export default {
       this.$nextTick(() => {
         document.querySelectorAll('.section').forEach(el => obs.observe(el));
       });
+    },
+    initBgInteraction() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const root = document.documentElement;
+      let raf = null;
+      let mx = 0.5, my = 0.5;
+      let tx = 0.5, ty = 0.5;
+
+      document.addEventListener('mousemove', (e) => {
+        tx = e.clientX / window.innerWidth;
+        ty = e.clientY / window.innerHeight;
+        if (!raf) tick();
+      });
+
+      function tick() {
+        mx += (tx - mx) * 0.06;
+        my += (ty - my) * 0.06;
+        root.style.setProperty('--mx', mx.toFixed(4));
+        root.style.setProperty('--my', my.toFixed(4));
+        raf = requestAnimationFrame(tick);
+      }
     }
   }
 }

@@ -80,6 +80,121 @@ body {
   transition: background var(--norm) var(--ease), color var(--norm) var(--ease);
 }
 
+/* ============================================================
+   BACKGROUND EFFECTS
+   ============================================================ */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Dot grid overlay */
+.bg-dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--border-subtle) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+}
+
+/* Cursor glow */
+.bg-cursor-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    oklch(0.65 0.24 260 / 0.08) 0%,
+    oklch(0.65 0.24 260 / 0.03) 40%,
+    transparent 70%
+  );
+  left: calc(var(--mx, 0.5) * 100% - 350px);
+  top: calc(var(--my, 0.5) * 100% - 350px);
+  transition: left 0.15s linear, top 0.15s linear;
+}
+
+/* Floating geometric shapes */
+.bg-shape {
+  position: absolute;
+  border: var(--border-w) solid var(--border);
+  transition: transform 0.3s var(--ease);
+  will-change: transform;
+}
+
+.bg-shape-1 {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: oklch(0.65 0.24 260 / 0.10);
+  top: 8%;
+  left: 5%;
+  transform: translate(
+    calc((var(--mx, 0.5) - 0.5) * 60px),
+    calc((var(--my, 0.5) - 0.5) * 60px)
+  );
+}
+
+.bg-shape-2 {
+  width: 220px;
+  height: 220px;
+  background: oklch(0.78 0.16 85 / 0.12);
+  bottom: 12%;
+  right: 8%;
+  transform: translate(
+    calc((var(--mx, 0.5) - 0.5) * -40px),
+    calc((var(--my, 0.5) - 0.5) * -40px)
+  );
+}
+
+.bg-shape-3 {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: oklch(0.78 0.16 150 / 0.10);
+  top: 55%;
+  right: 15%;
+  transform: translate(
+    calc((var(--mx, 0.5) - 0.5) * 30px),
+    calc((var(--my, 0.5) - 0.5) * 30px)
+  );
+}
+
+.bg-shape-4 {
+  width: 140px;
+  height: 140px;
+  background: oklch(0.78 0.16 30 / 0.10);
+  bottom: 35%;
+  left: 10%;
+  transform: translate(
+    calc((var(--mx, 0.5) - 0.5) * -50px),
+    calc((var(--my, 0.5) - 0.5) * -50px)
+  );
+}
+
+/* Dark mode adjustments */
+.dark-mode .bg-cursor-glow {
+  background: radial-gradient(
+    circle,
+    oklch(0.72 0.20 260 / 0.12) 0%,
+    oklch(0.72 0.20 260 / 0.04) 40%,
+    transparent 70%
+  );
+}
+
+.dark-mode .bg-shape-1 { background: oklch(0.72 0.20 260 / 0.08); border-color: oklch(0.95 0.01 80); }
+.dark-mode .bg-shape-2 { background: oklch(0.82 0.14 85 / 0.06); border-color: oklch(0.95 0.01 80); }
+.dark-mode .bg-shape-3 { background: oklch(0.78 0.16 150 / 0.06); border-color: oklch(0.95 0.01 80); }
+.dark-mode .bg-shape-4 { background: oklch(0.78 0.16 30 / 0.06); border-color: oklch(0.95 0.01 80); }
+
+/* Hide when no motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .bg-layer { display: none; }
+}
+
 /* ---- Typography ---- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font);

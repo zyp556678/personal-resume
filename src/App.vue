@@ -48,14 +48,17 @@
           <div class="bento-info">
             <h1 class="bento-name">张宇鹏</h1>
             <div class="bento-contacts">
+              <div class="contact-chip"><i class="fas fa-briefcase"></i> Java后端开发工程师</div>
               <div class="contact-chip"><i class="fas fa-phone"></i> 18745397398</div>
               <div class="contact-chip"><i class="fas fa-envelope"></i> taitanyunluo2@126.com</div>
               <div class="contact-chip"><i class="fas fa-user"></i> 男</div>
-              <div class="contact-chip"><i class="fas fa-map-marker-alt"></i> 黑龙江省牡丹江市</div>
               <div class="contact-chip"><i class="fas fa-birthday-cake"></i> 2005年12月</div>
-              <div class="contact-chip"><i class="fas fa-flag"></i> 汉族</div>
+              <div class="contact-chip"><i class="fas fa-flag"></i> 共青团员</div>
             </div>
             <div class="bento-social">
+              <a href="https://www.hellozypzyp.online/" target="_blank" class="social-pill" rel="noopener noreferrer">
+                <i class="fas fa-globe"></i> 个人信息网站
+              </a>
               <a href="https://github.com/zyp556678" target="_blank" class="social-pill" rel="noopener noreferrer">
                 <i class="fab fa-github"></i> GitHub
               </a>
@@ -226,76 +229,6 @@
         </div>
         <div class="projects-grid">
 
-          <div class="proj-card" @click="openProjectModal('yuewu')" tabindex="0" role="button" @keydown.enter="openProjectModal('yuewu')">
-            <div class="proj-head">
-              <h3>悦物在线商城系统</h3>
-              <span class="proj-role">后端开发</span>
-            </div>
-            <div class="proj-techs">
-              <span class="proj-tag">SpringCloud</span>
-              <span class="proj-tag">Redis</span>
-              <span class="proj-tag">RabbitMQ</span>
-              <span class="proj-tag">Elasticsearch</span>
-              <span class="proj-tag">Nacos</span>
-            </div>
-            <div class="proj-section">
-              <h4>概述</h4>
-              <p>基于SpringCloud微服务架构的分布式电商平台，涵盖商品、购物车、订单、支付、搜索等核心模块，旨在解决高并发场景下的性能问题。</p>
-            </div>
-            <div class="proj-section">
-              <h4>职责</h4>
-              <ul>
-                <li>负责购物车服务，采用Redis缓存购物车数据，异步处理优化数据库写入</li>
-                <li>开发订单系统核心流程，集成RabbitMQ延迟队列实现订单超时自动取消</li>
-                <li>构建基于Elasticsearch的商品索引，实现多维度复杂检索与排序</li>
-                <li>参与网关鉴权与路由配置，使用Nacos进行服务发现与配置管理</li>
-              </ul>
-            </div>
-            <div class="proj-section">
-              <h4>成果</h4>
-              <ul>
-                <li>通过缓存与消息队列技术，系统吞吐量提升30%</li>
-                <li>实现了完整的电商核心业务闭环，保障系统稳定与高效</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="proj-card" @click="openProjectModal('laboratory')" tabindex="0" role="button" @keydown.enter="openProjectModal('laboratory')">
-            <div class="proj-head">
-              <h3>实验室资源管理系统</h3>
-              <span class="proj-role">后端开发</span>
-            </div>
-            <div class="proj-techs">
-              <span class="proj-tag">SpringBoot</span>
-              <span class="proj-tag">JWT</span>
-              <span class="proj-tag">RBAC</span>
-              <span class="proj-tag">EasyExcel</span>
-              <span class="proj-tag">Minio</span>
-              <span class="proj-tag">AOP</span>
-              <span class="proj-tag">ECharts</span>
-            </div>
-            <div class="proj-section">
-              <h4>概述</h4>
-              <p>基于SpringBoot的实验室资源管理系统，解决权限控制、数据处理和文件存储问题。</p>
-            </div>
-            <div class="proj-section">
-              <h4>职责</h4>
-              <ul>
-                <li>设计并实现基于JWT的认证授权系统与RBAC权限模型</li>
-                <li>开发实验室、设备、课程等资源的RESTful API及预约审核流程</li>
-                <li>集成EasyExcel实现数据批量导入导出，集成Minio处理文件存储</li>
-                <li>利用AOP记录操作日志，提供数据聚合接口支持ECharts可视化</li>
-              </ul>
-            </div>
-            <div class="proj-section">
-              <h4>成果</h4>
-              <ul>
-                <li>构建了安全的多角色权限体系与完整的资源管理闭环</li>
-                <li>系统响应时间缩短30%，用户满意度提升20%</li>
-              </ul>
-            </div>
-          </div>
-
           <div class="proj-card" @click="openProjectModal('takeout')" tabindex="0" role="button" @keydown.enter="openProjectModal('takeout')">
             <div class="proj-head">
               <h3>鲲鹏外卖点餐平台</h3>
@@ -304,27 +237,84 @@
             <div class="proj-techs">
               <span class="proj-tag">SpringBoot</span>
               <span class="proj-tag">MyBatis-Plus</span>
+              <span class="proj-tag">MySQL</span>
               <span class="proj-tag">Redis</span>
-              <span class="proj-tag">Swagger</span>
+              <span class="proj-tag">Vue.js</span>
+              <span class="proj-tag">Element-UI</span>
+              <span class="proj-tag">Vant</span>
             </div>
             <div class="proj-section">
               <h4>概述</h4>
-              <p>基于SpringBoot的前后端分离外卖系统，提供高效、稳定的在线点餐服务。</p>
+              <p>功能完整的单体式架构外卖点餐系统，包含后台管理系统（面向商家管理员）和移动端H5（面向消费者），提供从菜品管理、用户下单到订单履约的全流程解决方案。</p>
             </div>
             <div class="proj-section">
               <h4>职责</h4>
               <ul>
-                <li>开发后台管理API（员工权限、菜品/套餐管理、订单处理）</li>
-                <li>实现用户端短信验证码登录及购物车、下单等核心业务逻辑</li>
-                <li>使用Redis缓存热点数据和验证码，优化系统性能与安全性</li>
-                <li>设计统一响应格式与数据库表结构，提供Swagger接口文档</li>
+                <li>负责后端全部模块及接口的设计与开发</li>
+                <li>实现基于Filter的统一登录拦截与权限校验（LoginCheckFilter）</li>
+                <li>基于MyBatis-Plus的通用CRUD与字段自动填充（MyMetaObjectHandler）</li>
+                <li>基于Redis的短信验证码存储与套餐数据缓存</li>
+                <li>设计统一响应结果封装（R.java）与ThreadLocalUtil存储当前登录用户ID</li>
               </ul>
             </div>
+          </div>
+
+          <div class="proj-card" @click="openProjectModal('yuewu')" tabindex="0" role="button" @keydown.enter="openProjectModal('yuewu')">
+            <div class="proj-head">
+              <h3>悦物在线商城系统</h3>
+              <span class="proj-role">后端开发</span>
+            </div>
+            <div class="proj-techs">
+              <span class="proj-tag">SpringCloud</span>
+              <span class="proj-tag">Nacos</span>
+              <span class="proj-tag">MySQL 8.0</span>
+              <span class="proj-tag">Redis</span>
+              <span class="proj-tag">RabbitMQ</span>
+              <span class="proj-tag">Elasticsearch</span>
+              <span class="proj-tag">JWT</span>
+            </div>
             <div class="proj-section">
-              <h4>成果</h4>
+              <h4>概述</h4>
+              <p>基于Spring Cloud (Nacos)微服务架构的大型分布式电商系统，涵盖商品管理、购物车、订单处理、支付、搜索、全文检索等核心电商功能模块，针对高并发场景进行了性能优化。</p>
+            </div>
+            <div class="proj-section">
+              <h4>职责</h4>
               <ul>
-                <li>通过Redis缓存技术，用户端响应速度提升30%</li>
-                <li>实现了完整的订单业务闭环与安全的用户认证机制</li>
+                <li>负责商品服务、购物车服务、搜索服务、订单服务等核心微服务模块的设计与开发</li>
+                <li>使用自定义注解@GmallCache实现缓存切面，提升查询性能</li>
+                <li>采用@Async异步写入和Redis缓存策略优化高并发下的购物车操作</li>
+                <li>基于Elasticsearch实现商品全文检索和多维度搜索</li>
+                <li>利用RabbitMQ延迟队列实现超时未支付订单自动取消</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="proj-card" @click="openProjectModal('wearwise')" tabindex="0" role="button" @keydown.enter="openProjectModal('wearwise')">
+            <div class="proj-head">
+              <h3>穿戴管家 (WearWise)</h3>
+              <span class="proj-role">AI开发</span>
+            </div>
+            <div class="proj-techs">
+              <span class="proj-tag">Flutter</span>
+              <span class="proj-tag">Dart</span>
+              <span class="proj-tag">Provider</span>
+              <span class="proj-tag">SQLite</span>
+              <span class="proj-tag">Open-Meteo API</span>
+              <span class="proj-tag">高德定位SDK</span>
+              <span class="proj-tag">OpenCode</span>
+            </div>
+            <div class="proj-section">
+              <h4>概述</h4>
+              <p>跨平台衣橱管理应用，帮助用户智能管理衣物、搭配穿搭、记录日常OOTD。支持Android/iOS/Web/Desktop多端运行，集成天气服务、相机拍照、GPS定位等功能。</p>
+            </div>
+            <div class="proj-section">
+              <h4>职责</h4>
+              <ul>
+                <li>采用OpenCode AI编程工具开发</li>
+                <li>使用Provider实现全局状态管理，sqflite实现本地数据持久化（数据库版本v7）</li>
+                <li>集成Open-Meteo天气API实现7天预报，设计三级Geocoding策略解决国内城市编码兼容问题</li>
+                <li>封装高德定位SDK实现GPS定位，实现相机模块双指缩放、点击对焦、闪光灯切换</li>
+                <li>通过Bento Grid布局优化首页信息展示，设计毛玻璃UI组件</li>
               </ul>
             </div>
           </div>
@@ -377,9 +367,8 @@
         </div>
         <div class="eval-box">
           <ul>
-            <li>了解基础的软件开发流程与规范，具备良好的编程习惯和学习新技术的能力</li>
-            <li>能够快速适应工作需求变化，拥有责任感</li>
-            <li>在复杂多变的工作环境中能够保持冷静思考</li>
+            <li>有良好的编程习惯和学习新技术的能力，能够快速适应工作需求变化</li>
+            <li>有责任感，在复杂多变的工作环境中能够保持冷静思考</li>
             <li>善于沟通交流，有效促进团队内部的合作氛围</li>
           </ul>
         </div>
@@ -442,9 +431,9 @@ export default {
     },
     openProjectModal(key) {
       const map = {
+        takeout: { name: '鲲鹏外卖点餐平台', gitee: 'https://gitee.com/zyp556678/take_out_system', github: 'https://github.com/zyp556678/take_out_system' },
         yuewu: { name: '悦物在线商城系统', gitee: 'https://gitee.com/zyp556678/yuewu_parent', github: 'https://github.com/zyp556678/yuewu_parent' },
-        laboratory: { name: '实验室资源管理系统', gitee: 'https://gitee.com/zyp556678/laboratory-master', github: 'https://github.com/zyp556678/laboratory-master' },
-        takeout: { name: '鲲鹏外卖点餐平台', gitee: 'https://gitee.com/zyp556678/take_out_system', github: 'https://github.com/zyp556678/take_out_system' }
+        wearwise: { name: '穿戴管家 (WearWise)', gitee: 'https://gitee.com/zyp556678/wareManager', github: 'https://github.com/zyp556678/wareManager' }
       };
       this.selectedProject = map[key];
       this.showModal = true;

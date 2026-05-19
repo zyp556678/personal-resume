@@ -258,6 +258,35 @@
             </div>
           </div>
         </article>
+
+        <!-- Proj 4 -->
+        <article class="project-card reveal-up" style="--delay:3" @click="openProjectModal('wareManager')" tabindex="0" role="button" @keydown.enter="openProjectModal('wareManager')">
+          <div class="project-number" aria-hidden="true">04</div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>穿戴管家</h3>
+              <span class="project-role">全栈开发</span>
+            </div>
+            <div class="project-tags">
+              <span>Flutter</span><span>Dart</span><span>SQLite</span><span>Material Design 3</span><span>高德定位</span>
+            </div>
+            <p class="project-desc">跨平台衣橱管理应用，帮助智能管理衣物、搭配穿搭、记录日常OOTD，提供五组主题配色和深色模式支持。</p>
+            <div class="project-stats">
+              <div class="project-stat"><span class="stat-value">跨平台</span><span class="stat-label">iOS/Android/Web</span></div>
+              <div class="project-stat"><span class="stat-value">5组</span><span class="stat-label">主题配色</span></div>
+              <div class="project-stat"><span class="stat-value">Material 3</span><span class="stat-label">设计语言</span></div>
+            </div>
+            <ul class="project-bullets">
+              <li>衣橱管理、分类浏览、瀑布流展示</li>
+              <li>智能识别确认、闲置管理</li>
+              <li>高德定位SDK与Open-Meteo天气API集成</li>
+              <li>毛玻璃UI组件与现代化拍照界面</li>
+            </ul>
+            <div class="project-link-indicator">
+              <span>查看源码</span><i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -377,7 +406,8 @@ export default {
       const map = {
         yuewu: { name: '悦物在线商城系统', gitee: 'https://gitee.com/zyp556678/yuewu_parent', github: 'https://github.com/zyp556678/yuewu_parent' },
         laboratory: { name: '实验室资源管理系统', gitee: 'https://gitee.com/zyp556678/laboratory-master', github: 'https://github.com/zyp556678/laboratory-master' },
-        takeout: { name: '鲲鹏外卖点餐平台', gitee: 'https://gitee.com/zyp556678/take_out_system', github: 'https://github.com/zyp556678/take_out_system' }
+        takeout: { name: '鲲鹏外卖点餐平台', gitee: 'https://gitee.com/zyp556678/take_out_system', github: 'https://github.com/zyp556678/take_out_system' },
+        wareManager: { name: '穿戴管家', gitee: 'https://gitee.com/zyp556678/wareManager', github: 'https://github.com/zyp556678/wareManager' }
       }
       this.selectedProject = map[key]
       this.showModal = true

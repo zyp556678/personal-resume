@@ -60,7 +60,7 @@ EasyExcel、Minio
 
 ## 项目经验
 
-### 谷粒商城（gmall）- 后端开发工程师
+### 悦物在线商城系统 - 后端开发工程师
 - **技术栈**：SpringCloud、Redis、RabbitMQ、Elasticsearch、Nacos
 - **职责**：购物车服务、订单系统、商品搜索、网关鉴权
 - **成果**：系统吞吐量提升30%，实现高并发处理
@@ -74,6 +74,11 @@ EasyExcel、Minio
 - **技术栈**：SpringBoot、MyBatis-Plus、Redis、Swagger
 - **职责**：后台管理API、用户登录、购物车、订单系统
 - **成果**：响应速度提升30%，实现安全认证与订单闭环
+
+### 穿戴管家 - 全栈开发
+- **技术栈**：Flutter、Dart、SQLite、Material Design 3、高德定位
+- **职责**：衣橱管理、智能识别、闲置管理、天气集成
+- **成果**：跨平台应用，支持iOS/Android/Web，五组主题配色
 
 ## 自我评价
 

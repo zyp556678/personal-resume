@@ -12,10 +12,10 @@
         :key="repo.name"
         :to="{ path: '/repos', query: { r: repo.name } }"
         class="deck-card"
-        :class="posClass(i)"
+        :class="{ 'is-active': i === nearest }"
         :style="cardStyle(i)"
-        :aria-hidden="i !== active ? 'true' : 'false'"
-        :tabindex="i === active ? 0 : -1"
+        :aria-hidden="isHidden(i) ? 'true' : 'false'"
+        :tabindex="isHidden(i) ? -1 : 0"
       >
         <div class="deck-head">
           <span class="deck-idx">{{ String(i + 1).padStart(2, '0') }}</span>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="deck-controls">
-      <button class="deck-btn" aria-label="上一个" @click="prev">
+      <button class="deck-btn" aria-label="上一个" @click="nudge(-1)">
         <i class="fas fa-chevron-up"></i>
       </button>
       <div class="deck-dots">
@@ -48,13 +48,12 @@
           v-for="(repo, i) in order"
           :key="repo.name"
           class="deck-dot"
-          :class="{ on: i === active }"
-          :aria-label="`查看 ${repo.title}`"
-          :aria-current="i === active"
-          @click="go(i)"
+          :class="{ on: i === nearest }"
+          :aria-label="`跳到 ${repo.title}`"
+          @click="goTo(i)"
         ></button>
       </div>
-      <button class="deck-btn" aria-label="下一个" @click="next">
+      <button class="deck-btn" aria-label="下一个" @click="nudge(1)">
         <i class="fas fa-chevron-down"></i>
       </button>
     </div>
@@ -64,69 +63,111 @@
 <script>
 import { ALL_REPOS, langColor } from '../data/repos.js'
 
+/* Cards fade out by |distance| = FADE, which sets how much vertical
+   room the stage must reserve (see --deck-fade in the stylesheet). */
+const FADE = 1.6
+
 export default {
   name: 'RepoCarousel',
   props: {
-    interval: { type: Number, default: 3600 }
+    /* ms for one card to travel one slot */
+    stepMs: { type: Number, default: 2800 }
   },
   data() {
     return {
-      active: 0,
+      order: ALL_REPOS,
+      pos: 0,          // continuous position, in cards (float)
+      tween: null,     // target when easing after a click
       paused: false,
-      timer: null,
-      order: ALL_REPOS
+      raf: null,
+      last: 0,
+      reduced: false
+    }
+  },
+  computed: {
+    count() { return this.order.length },
+    nearest() {
+      const n = Math.round(this.pos) % this.count
+      return (n + this.count) % this.count
     }
   },
   mounted() {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!reduce) this.start()
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!this.reduced) {
+      this.last = performance.now()
+      this.raf = requestAnimationFrame(this.tick)
+    }
   },
   beforeUnmount() {
-    this.stop()
+    if (this.raf) cancelAnimationFrame(this.raf)
   },
   methods: {
     langColor,
-    start() {
-      this.stop()
-      this.timer = setInterval(() => {
-        if (!this.paused) this.next()
-      }, this.interval)
-    },
-    stop() {
-      if (this.timer) clearInterval(this.timer)
-      this.timer = null
-    },
-    next() { this.active = (this.active + 1) % this.order.length },
-    prev() { this.active = (this.active - 1 + this.order.length) % this.order.length },
-    go(i) { this.active = i },
-    /* relative offset: -1 = going up (previous), 0 = active, 1 = down (next) */
-    offset(i) {
-      const n = this.order.length
-      let d = i - this.active
-      if (d > n / 2) d -= n
-      if (d < -n / 2) d += n
-      return d
-    },
-    posClass(i) {
-      const d = this.offset(i)
-      if (d === 0) return 'is-active'
-      if (d === -1) return 'is-prev'
-      if (d === 1) return 'is-next'
-      return 'is-hidden'
-    },
-    cardStyle(i) {
-      const d = this.offset(i)
-      const abs = Math.abs(d)
-      if (abs > 1) return { display: 'none' }
-      const scale = d === 0 ? 1 : 0.94
-      const y = d === 0 ? 0 : d * 50 // ±50% of card height
-      const z = 10 - abs
-      const op = d === 0 ? 1 : 0.5
-      return {
-        transform: `translateY(${y}%) scale(${scale})`,
-        zIndex: z,
-        opacity: op
+    tick(ts) {
+      const dt = Math.min(ts - this.last, 64)
+      this.last = ts
+
+      if (this.tween != null) {
+        this.pos += (this.tween - this.pos) * Math.min(1, dt / 240)
+        if (Math.abs(this.tween - this.pos) < 0.002) {
+          this.pos = this.tween
+          this.tween = null
+        }
+      } else if (!this.paused) {
+        this.pos += dt / this.stepMs
       }
+
+      this.raf = requestAnimationFrame(this.tick)
+    },
+
+    /* signed distance from the current position to card i, folded into
+       [-count/2, count/2] so the deck wraps at both ends */
+    dist(i) {
+      const n = this.count
+      let x = (i - this.pos) % n
+      if (x < -n / 2) x += n
+      if (x >= n / 2) x -= n
+      return x
+    },
+
+    isHidden(i) { return Math.abs(this.dist(i)) > FADE },
+
+    cardStyle(i) {
+      const x = this.dist(i)
+      const ax = Math.abs(x)
+      if (ax > FADE) return { display: 'none' }
+
+      // opacity: 1 at centre, 0.5 one slot away, 0 at the fade edge
+      const opacity = ax <= 1 ? 1 - 0.5 * ax : 0.5 * ((FADE - ax) / (FADE - 1))
+
+      return {
+        transform: `translateY(${x * 50}%) scale(${1 - Math.min(ax, 1) * 0.06})`,
+        zIndex: 100 - Math.round(ax * 50),
+        opacity
+      }
+    },
+
+    /* Ease to the slot nearest the given index, taking the short way round. */
+    goTo(i) {
+      const n = this.count
+      const cur = this.tween != null ? this.tween : this.pos
+      this.tween = i + Math.round((cur - i) / n) * n
+      if (this.reduced) this.settleNow()
+    },
+
+    nudge(dir) {
+      if (this.reduced) {
+        this.pos = Math.round(this.pos) + dir
+        return
+      }
+      const cur = this.tween != null ? this.tween : this.pos
+      this.tween = dir > 0 ? Math.ceil(cur + 0.0001) : Math.floor(cur - 0.0001)
+    },
+
+    /* Reduced motion: jump straight to the target instead of easing. */
+    settleNow() {
+      this.pos = this.tween
+      this.tween = null
     }
   }
 }

@@ -1449,22 +1449,25 @@ a.skill-item:hover::after { color: var(--accent); }
 }
 
 /* ============================================================
-   REPO CAROUSEL — stacked deck (landing masthead)
-   Cards stack vertically: the active one on top, the previous
-   peeking above and the next peeking below, each offset 50%.
+   REPO CAROUSEL — continuously scrolling stacked deck
+   Cards travel smoothly through the stack: the nearest one sits on
+   top at centre, neighbours sit half a slot above and below, and
+   they fade out by |distance| = FADE (1.6 slots = 80% of card height).
+   Position is driven per-frame from JS, so there is deliberately no
+   transition on transform/opacity here.
    ============================================================ */
 .deck {
   width: min(340px, 100%);
   --deck-card-h: 200px;
-  --deck-peek: 100px; /* 50% of card height */
+  /* clearance = FADE (1.6) × 50% of card height */
+  --deck-room: 160px;
 }
 
 .deck-stage {
   position: relative;
   height: var(--deck-card-h);
-  /* Clearance for the peeking cards: the previous one rises a full
-     peek above, the next one drops a full peek below. */
-  margin: calc(var(--deck-peek) + var(--s4)) 0 calc(var(--deck-peek) + var(--s5));
+  /* Room for the cards fading out above and below. */
+  margin: calc(var(--deck-room) + var(--s4)) 0 calc(var(--deck-room) + var(--s5));
 }
 
 .deck-card {
@@ -1481,7 +1484,8 @@ a.skill-item:hover::after { color: var(--accent); }
   border: 1px solid var(--rule);
   border-radius: 2px;
   transform-origin: center center;
-  transition: transform var(--norm) var(--ease), opacity var(--norm) var(--ease), border-color var(--fast) var(--ease);
+  /* Only the highlight eases; transform/opacity are set every frame. */
+  transition: border-color var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
   will-change: transform, opacity;
 }
 .deck-card.is-active {
@@ -1489,9 +1493,6 @@ a.skill-item:hover::after { color: var(--accent); }
   box-shadow: 0 6px 20px rgba(16, 19, 25, 0.10);
 }
 .dark-mode .deck-card.is-active { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); }
-.deck-card.is-prev,
-.deck-card.is-next { pointer-events: auto; }
-.deck-card.is-hidden { pointer-events: none; }
 
 .deck-head {
   display: flex;

@@ -71,9 +71,12 @@ npm run preview      # 预览生产构建
 ## RepoCarousel（首页叠放轮播）
 
 - 组件 `src/components/RepoCarousel.vue`，数据来自 `src/data/repos.js`
-- 叠放规则：`offset()` 算最短环形距离，活动卡在最上层，前一张上移、后一张下移各 **50% 卡片高**，其余 `display:none`
-- 卡片高度 / 露出高度由 `.deck` 的 `--deck-card-h` / `--deck-peek` 控制，**两者必须保持 1:2 关系**，否则叠放几何会错；`.deck-stage` 的上下 margin 按 peek 预留空间
-- 交互：自动轮播（默认 3600ms）、悬停 / 聚焦暂停、上下按钮、圆点、`prefers-reduced-motion` 下不自动播放
+- **持续匀速滚动**，不是间隔跳转：`pos` 是连续浮点位置（单位＝卡片），`requestAnimationFrame` 每帧推进，`stepMs`（默认 2800）是「走完一张卡」的时长
+- 卡片按与 `pos` 的连续距离 `dist(i)`（折到 `[-n/2, n/2]` 实现环形）做位移 / 缩放 / 透明度：距离 1 时偏移 50% 卡高、透明度 0.5，`FADE`(1.6) 处淡出为 0
+- **卡片上不能有 transform / opacity 过渡**——逐帧写值会和 CSS 过渡打架，只保留 border-color / box-shadow 的过渡
+- `.deck` 的 `--deck-card-h`(200px) 与 `--deck-room`(160px) 必须对应 `FADE × 50% × 卡高`，否则淡出中的卡片会被裁切
+- 交互：悬停 / 聚焦暂停、上下按钮（缓动到相邻槽位）、圆点直接跳转
+- `prefers-reduced-motion`：不启动 rAF，按钮 / 圆点改为瞬时跳转
 
 ## 修改内容时的注意事项
 
